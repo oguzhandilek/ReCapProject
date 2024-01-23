@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using Core.Utilities.Results.Abstract;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Business.Abstarct
 {
     public interface IBrandService
     {
-        List<Brand> GetAll();
-        Brand GetById(int id);
-        void Add(Brand brand);
-        void Update(Brand brand);
-        void Delete(int id);
+        IDataResult<List<Brand>> GetAll();
+        IDataResult<Brand> GetById(int id); // buradaki <Brand> liste değil interface istediğimiz <T> datası
+        IResult Add(Brand brand);
+        IResult Update(Brand brand);
+       void Delete(int id);
 
     }
 }
