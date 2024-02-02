@@ -10,7 +10,7 @@ namespace WebAPI.Controllers
     [Route("api/brands")]
     public class BrandsController : Controller
     {
-        private readonly IBrandService _brandService;
+        private readonly IBrandService _brandService; //loosely coupled (Gevşek bağımlılık) 
 
         public BrandsController(IBrandService brandService)
         {
@@ -20,8 +20,14 @@ namespace WebAPI.Controllers
         [HttpGet()]
         public IActionResult GetAll() 
         {
-           var result=_brandService.GetAll();
-            return Ok(result);
+            var result = _brandService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+    
+          
 
         }
 
