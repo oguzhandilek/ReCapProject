@@ -1,11 +1,15 @@
 ﻿using Business.Abstarct;
 using Business.Constants;
+using Business.Rules.Validation.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +25,11 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public IResult Add(Brand brand)
+        public IResult Add(Brand brand) //2:13
         {
-            if (brand.Name.Length<2)
-            {
-                return new ErrorResult(Messages.BrandNameInvalid);
-            }
+          
+            ValidationTool.Validate(new BrandValidator(), brand);
+
            _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAdded);
         }

@@ -16,6 +16,7 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 builder.Services.RegisterBusinessServicess();
 
+
 builder.Services.AddCors(options => //D��ar�dan bilmedi�in bir istek gelirse kabul et
 {
     options.AddPolicy(name: "AllowAnyOrigin",
