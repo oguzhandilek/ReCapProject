@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Business.Rules.Validation.FluentValidation
 {
-    public  class BrandValidator:AbstractValidator<Brand> //1:05
+    public  class BrandValidator:AbstractValidator<Brand> 
     {
         public BrandValidator()
         {
             RuleFor(b=> b.Name).NotEmpty();
-            RuleFor(b=> b.Name).MinimumLength(2).WithMessage("Marka en az iki karakter olmalı");
+            RuleFor(b=> b.Name).MinimumLength(5).WithMessage("Marka en az iki karakter olmalı");
            
 
         }
