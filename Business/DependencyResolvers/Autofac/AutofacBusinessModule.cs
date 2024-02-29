@@ -18,8 +18,14 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<BrandManager>().As<IBrandService>();
-            builder.RegisterType<EfBrandDal>().As<IBrandDal>();
+            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();
+
+            builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
+            builder.RegisterType<EfCarDal>().As<ICarService>().SingleInstance();
+
+            builder.RegisterType<ColorManager>().As<IColorService>().SingleInstance();
+            builder.RegisterType<EfColorDal>().As<IColorDal>().SingleInstance();
 
             //Kodu Engin Demiroğ Business/DependencyResolvers/Autofac/AutofacBusinessModule.cs 32-38 satırdan dan kopyaaldım
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
