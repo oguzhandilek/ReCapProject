@@ -27,7 +27,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(BrandValidator))]
-        public IResult Add(Brand brand) //2:13
+        public IResult Add(Brand brand) //01:15
         {
           
          _brandDal.Add(brand);
